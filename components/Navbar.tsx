@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { NAV_ITEMS, LANGUAGES, ASSETS } from '../constants';
-import { Menu, X, ChevronDown, Globe, FileText } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import { useLanguage, useApp } from '../App';
 
 const Navbar: React.FC = () => {
@@ -19,11 +19,6 @@ const Navbar: React.FC = () => {
 
   const navigateToHome = () => {
     setView('home');
-    setIsMenuOpen(false);
-  };
-
-  const navigateToProposal = () => {
-    setView('proposal');
     setIsMenuOpen(false);
   };
 
@@ -73,14 +68,6 @@ const Navbar: React.FC = () => {
               </button>
             )}
 
-            <button 
-              onClick={navigateToProposal}
-              className={`flex items-center space-x-2 text-sm font-medium transition-colors ${view === 'proposal' ? 'text-orange-400' : 'text-gray-400 hover:text-white'}`}
-            >
-              <FileText size={16} />
-              <span>{language === 'pt' ? 'Proposta em PDF' : 'PDF Proposal'}</span>
-            </button>
-            
             {/* Language Selector */}
             <div className="relative">
               <button 
@@ -128,10 +115,6 @@ const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 w-full glass mt-2 p-6 flex flex-col space-y-4 animate-in fade-in slide-in-from-top-4">
           <button onClick={navigateToHome} className="text-lg font-medium text-gray-400 hover:text-white text-left">
             {language === 'pt' ? 'Início' : 'Home'}
-          </button>
-          <button onClick={navigateToProposal} className="text-lg font-medium text-gray-400 hover:text-white text-left flex items-center space-x-2">
-            <FileText size={20} />
-            <span>{language === 'pt' ? 'PDF da Proposta' : 'PDF Proposal'}</span>
           </button>
           
           <div className="flex space-x-4 py-2 border-t border-white/5">

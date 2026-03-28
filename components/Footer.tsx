@@ -1,10 +1,10 @@
 
 import React from 'react';
-import { Mail, Github, Instagram, Linkedin, Globe, Shield } from 'lucide-react';
+import { Mail, Instagram, Shield, FileText, Phone, MapPin } from 'lucide-react';
 import { useApp } from '../App';
 
 const Footer: React.FC = () => {
-  const { language, t, setIsAdminOpen } = useApp();
+  const { language, t, setIsAdminOpen, setView } = useApp();
   const f = t.footer;
 
   return (
@@ -33,11 +33,9 @@ const Footer: React.FC = () => {
               {f.desc[language]}
             </p>
             <div className="flex space-x-4">
-              {[Instagram, Linkedin, Github, Globe].map((Icon, idx) => (
-                <a key={idx} href="#" className="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-orange-500 transition-all">
-                  <Icon size={20} />
-                </a>
-              ))}
+              <a href="#" className="w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-orange-500 transition-all">
+                <Instagram size={20} />
+              </a>
             </div>
           </div>
 
@@ -47,14 +45,25 @@ const Footer: React.FC = () => {
               <li><a href="#services" className="hover:text-orange-400">Services</a></li>
               <li><a href="#process" className="hover:text-orange-400">Stack</a></li>
               <li><a href="#" className="hover:text-orange-400">Cases</a></li>
+              <li>
+                <button 
+                  onClick={() => setView('proposal')} 
+                  className="hover:text-orange-400 flex items-center space-x-2 transition-colors"
+                >
+                  <FileText size={16} />
+                  <span>{language === 'pt' ? 'Proposta em PDF' : 'PDF Proposal'}</span>
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
             <h6 className="text-white font-bold mb-6">{f.connection[language]}</h6>
             <ul className="space-y-4 text-gray-500 text-sm">
-              <li className="flex items-center"><Mail size={16} className="mr-2 text-orange-400" /> contato@mundi.ag</li>
-              <li>Sede Galáctica: São Paulo, BR</li>
+              <li className="flex items-center"><Mail size={16} className="mr-2 text-orange-400 flex-shrink-0" /> atendimento@agenciamundi.com</li>
+              <li className="flex items-center"><Phone size={16} className="mr-2 text-orange-400 flex-shrink-0" /> +55 34 9 9199-3722</li>
+              <li className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-orange-400 flex-shrink-0" /> <span>Brasil - R. Alaor Prata, 362 - Estados Unidos, Uberaba - MG</span></li>
+              <li className="flex items-start"><MapPin size={16} className="mr-2 mt-1 text-orange-400 flex-shrink-0" /> <span>Alemanha - Versmannstraße 4, Betahaus Hafencity, 20457 Hamburg - Germany</span></li>
             </ul>
           </div>
         </div>

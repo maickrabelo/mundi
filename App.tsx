@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Process from './components/Process';
-import ChatInterface from './components/ChatInterface';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard';
 import ProposalView from './components/ProposalView';
@@ -128,8 +127,6 @@ const App: React.FC = () => {
                 </div>
               </div>
             </section>
-
-            <ChatInterface />
             
             <Footer />
           </div>
